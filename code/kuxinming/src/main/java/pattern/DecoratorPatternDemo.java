@@ -13,12 +13,34 @@ public class DecoratorPatternDemo
 {
     public static void main(String[] args)
     {
+        //被装饰者
         Target decorator = new Decorator();
+        //原始模式
         System.out.println("不加装饰，添加删除结果为：_________");
         decorator.add();
         decorator.remove();
-        System.out.println("不加装饰，结果结束________________");
-        System.out.println("添加提醒装饰结果打印为：");
+        System.out.println("不加装饰，结果结束________________\n");
+        
+        //添加提醒装饰
+        System.out.println("添加提醒装饰结果打印为：~~~~~~~~~~~~~");
+        Target decorator01 = new Decorator_One(decorator);
+        decorator01.add();
+        decorator01.remove();
+        System.out.println("添加提醒装饰，结果结束~~~~~~~~~~~~~~~\n");
+        
+        //添加开关装饰
+        System.out.println("添加开关装饰结果打印为：~~~~~~~~~~~~~");
+        Target decorator02 = new Decorator_Two(decorator);
+        decorator02.add();
+        decorator02.remove();
+        System.out.println("添加开关装饰，结果结束~~~~~~~~~~~~~~~");
+        
+        //添加提醒+开关模式
+        System.out.println("添加双重装饰打印结为~~~~~~~~~~~~~~~");
+        Target decorator03 = new Decorator_One(new Decorator_Two(decorator)) ;
+        decorator03.add();
+        decorator03.remove();
+        System.out.println("添加双重装饰，结果结束~~~~~~~~~~~~~~~");
     }
 }
 /**
@@ -92,6 +114,7 @@ class Decorator_Two extends Messter{
         super(target);
     }
     public boolean enterAdd() {
+        System.out.println("是否添加？");
         boolean b = sc.nextBoolean();
         if(b) {
             System.out.println("你确认添加");
@@ -101,6 +124,7 @@ class Decorator_Two extends Messter{
         return b;
     }
     public boolean enterRemove() {
+        System.out.println("是否删除?");
         boolean b = sc.nextBoolean();
         if(b) {
             System.out.println("你确认删除");
@@ -112,14 +136,14 @@ class Decorator_Two extends Messter{
     @Override
     public void add()
     {
-        if(enterAdd())return;
+        if(!enterAdd())return;
         super.add();
         System.out.println("添加成功");
     }
     @Override
     public void remove()
     {
-        if(enterRemove())return;
+        if(!enterRemove())return;
         super.remove();
         System.out.println("删除成功");
     }
@@ -137,31 +161,12 @@ class Decorator implements Target {
     @Override
     public void add()
     {
-        try
-        {
-            Thread.sleep(10);
-        }
-        catch (InterruptedException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        System.err.println("真正的添加操作，添加+1");
+        System.out.println("+++++++++真正的添加操作，添加+1");
     }
-
     @Override
     public void remove()
     {
-        try
-        {
-            Thread.sleep(10);
-        }
-        catch (InterruptedException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        System.err.println("真正的删除操作，删除-1");
+        System.out.println("—————————真正的删除操作，删除-1");
     }
     
 }
