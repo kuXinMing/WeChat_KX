@@ -1,5 +1,11 @@
 package pattern;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Scanner;
 
 /**
@@ -11,8 +17,11 @@ import java.util.Scanner;
  */
 public class DecoratorPatternDemo
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws FileNotFoundException
     {
+        BufferedInputStream bis = new BufferedInputStream(new FileInputStream(new File("")));
+        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File("")));
+
         //被装饰者
         Target decorator = new Decorator();
         //原始模式
@@ -168,5 +177,4 @@ class Decorator implements Target {
     {
         System.out.println("—————————真正的删除操作，删除-1");
     }
-    
 }
