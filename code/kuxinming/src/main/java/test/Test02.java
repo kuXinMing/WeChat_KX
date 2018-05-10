@@ -1,5 +1,7 @@
 package test;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class Test02 {
@@ -25,7 +27,18 @@ public class Test02 {
 		String a=new String("foo");
 		String b=new String("foo");
 		System.out.println(a!=b);
+		
 	}
+	
+	@Test
+    public void test03()
+        throws Exception
+    {
+        System.out.println(10 & 2);
+        System.out.println(10 | 2);
+        System.out.println(10 ^ 2);
+        System.out.println(~2);
+    }
 	
 }
 
@@ -65,6 +78,18 @@ class Demo{
 		return true;
 	}
 	
-	
+	@Test
+    public void test04()
+        throws Exception
+    {
+	    //子类引用指向父类引用的对象
+	    Father f = new Son();
+	    Son s = (Son)f;
+    }
 	
 }
+
+
+
+class Father{}
+class Son extends Father{}
