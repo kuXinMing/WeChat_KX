@@ -4,7 +4,7 @@ import Util.CloneUtil;
 
 public class Test {
 
-	@org.junit.Test
+	@org.junit.jupiter.api.Test
 	public void test01() {
 		//s1
 		Student s1 = new Student();
@@ -29,7 +29,7 @@ public class Test {
 		System.out.println("S2对象的地址为："+s2.printAddress());
 	}
 	
-	@org.junit.Test
+
 	public void test02() {
 		Student s1 = new Student();
 		s1.setName("ming");
@@ -41,7 +41,7 @@ public class Test {
 		System.out.println("S2:" + s2);
 	}
 	
-	@org.junit.Test
+
 	public void test03() {
 		//s1
 		Student s1 = new Student();
@@ -64,7 +64,7 @@ public class Test {
 		System.out.println("S1对象的地址为："+s1.printAddress());
 		System.out.println("S2对象的地址为："+s2.printAddress());
 	}
-	@org.junit.Test
+
 	public void test04() {
 		//s1
 		Student s1 = new Student();
